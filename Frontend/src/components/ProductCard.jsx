@@ -16,7 +16,7 @@ const ProductCard = ({ title, description, imageUrl }) => {
           <p className="text-sm text-gray-300">{description}</p>
         </div>
         <div className="card-actions mt-4 flex justify-end">
-          <button className="btn btn-primary">Fund Now</button>
+          <button className="btn btn-accent">Help Now</button>
         </div>
       </div>
     </div>

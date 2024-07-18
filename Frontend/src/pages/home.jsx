@@ -62,7 +62,7 @@ const products = [
 
 function Home() {
   return (
-    <div>
+    <div className='text-white bg-base-100'>
       <Navbar />
       <div className='flex justify-center items-center'>
         <div className="flex flex-wrap w-[93vw] items-center justify-center ml-1 p-1">

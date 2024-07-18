@@ -1,0 +1,32 @@
+/* Hide up and down arrows in Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide up and down arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.example {
+    overflow: hidden;
+  }
+  
+  /* Hide scrollbar for Internet Explorer, Edge */
+  .example {
+    -ms-overflow-style: none;  /* IE and Edge */
+  }
+  
+  /* Hide scrollbar for Firefox */
+  .example {
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  /* Hide scrollbar for WebKit browsers */
+  .example::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, and Opera */
+  }
+  
