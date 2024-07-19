@@ -229,12 +229,12 @@ const makePayment = async (req, res) => {
     const account = await server.loadAccount(senderPublicKey);
     const transaction = new DiamSdk.TransactionBuilder(account, {
       fee: await server.fetchBaseFee(),
-      networkPassphrase: Networks.TESTNET
+      networkPassphrase: DiamSdk.Networks.TESTNET
     })
       .addOperation(
-        Operation.payment({
+        DiamSdk.Operation.payment({
           destination: receiverPublicKey,
-          asset: Asset.native(),
+          asset:   DiamSdk.Asset.native(),
           amount: amount
         })
       )
