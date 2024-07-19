@@ -1,79 +1,52 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import ProductCard from '../components/ProductCard';
-
-const products = [
-  {
-    id: 1,
-    title: 'Shoes qwerty!',
-    description: 'If a dog chews shoes whose shoes does he choose?',
-    imageUrl: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg',
-  },
-  {
-    id: 2,
-    title: 'Headphones',
-    description: 'Immerse yourself in high-quality sound.',
-    imageUrl: 'https://img.freepik.com/free-photo/shiny-black-headphones-reflect-golden-nightclub-lights-generated-by-ai_188544-10148.jpg',
-  },
-  {
-    id: 3,
-    title: 'Smartwatch',
-    description: 'Stay connected and track your fitness goals.',
-    imageUrl: 'https://img.freepik.com/free-vector/realistic-fitness-trackers_23-2148530529.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1721174400&semt=ais_user',
-  },
-  {
-    id: 2,
-    title: 'Headphones',
-    description: 'Immerse yourself in high-quality sound.',
-    imageUrl: 'https://img.freepik.com/free-photo/shiny-black-headphones-reflect-golden-nightclub-lights-generated-by-ai_188544-10148.jpg',
-  },
-  {
-    id: 3,
-    title: 'Smartwatch',
-    description: 'Stay connected and track your fitness goals.',
-    imageUrl: 'https://img.freepik.com/free-vector/realistic-fitness-trackers_23-2148530529.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1721174400&semt=ais_user',
-  },
-  {
-    id: 2,
-    title: 'Headphones',
-    description: 'Immerse yourself in high-quality sound.',
-    imageUrl: 'https://img.freepik.com/free-photo/shiny-black-headphones-reflect-golden-nightclub-lights-generated-by-ai_188544-10148.jpg',
-  },
-  {
-    id: 3,
-    title: 'Smartwatch',
-    description: 'Stay connected and track your fitness goals.',
-    imageUrl: 'https://img.freepik.com/free-vector/realistic-fitness-trackers_23-2148530529.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1721174400&semt=ais_user',
-  },
-  {
-    id: 2,
-    title: 'Headphones',
-    description: 'Immerse yourself in high-quality sound.',
-    imageUrl: 'https://img.freepik.com/free-photo/shiny-black-headphones-reflect-golden-nightclub-lights-generated-by-ai_188544-10148.jpg',
-  },
-  {
-    id: 3,
-    title: 'Smartwatch',
-    description: 'Stay connected and track your fitness goals.',
-    imageUrl: 'https://img.freepik.com/free-vector/realistic-fitness-trackers_23-2148530529.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1721174400&semt=ais_user',
-  },
-  
-];
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import ProductCard from "../components/ProductCard";
+import { getAllFundraisers } from "../apis/fundApi";
+import { Link } from "react-router-dom";
 
 function Home() {
+  const [fundraiser, setFundaraiser] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAllFundraisers();
+        setFundaraiser(response.data.result);
+        console.log(fundraiser);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
-    <div className='text-white bg-base-100'>
+    <div className="text-white bg-base-100 h-screen">
       <Navbar />
-      <div className='flex justify-center items-center'>
+      <div className="flex justify-center items-center">
         <div className="flex flex-wrap w-[93vw] items-center justify-center ml-1 p-1">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              imageUrl={product.imageUrl}
-            />
-          ))}
+          {fundraiser.length > 0 ? (
+            fundraiser.map((fundraiser) => (
+              <Link to={`/details/${fundraiser._id}`}>
+                <ProductCard
+                  key={fundraiser._id}
+                  title={fundraiser.title}
+                  description={fundraiser.description}
+                  imageUrl={fundraiser.images[0]}
+                />
+              </Link>
+            ))
+          ) : (
+            <div>No products available.</div>
+          )}
         </div>
       </div>
     </div>
