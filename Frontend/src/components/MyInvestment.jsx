@@ -1,6 +1,6 @@
 function MyDonations({ src, funds, amount, total_amount }) {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center md:items-start bg-white p-6 rounded-lg shadow-md">
+    <div className="flex flex-col md:flex-row justify-between items-center md:items-start bg-slate-800 p-6 rounded-lg shadow-md text-white">
       <div className="w-full md:w-1/4 mb-4 md:mb-0 h-48 md:h-48 flex-shrink-0">
         <div className="w-full h-full overflow-hidden rounded-lg">
           <img

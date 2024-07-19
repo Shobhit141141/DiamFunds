@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import Navbar from "../components/Navbar";
 
 function DashBoard({ setProgress }) {
-  const [activeTab, setActiveTab] = useState("My Investments");
+  const [activeTab, setActiveTab] = useState("My Donations");
   const [user, setUser] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -51,7 +51,7 @@ function DashBoard({ setProgress }) {
   }, [activeTab]);
 
   return (
-    <div>
+    <div className="bg-base-100 w-full h-screen example">
       <Navbar />
       {!loading && (
         <div className="p-6 h-[100vh] bg-base-100 overflow-auto">
@@ -64,13 +64,13 @@ function DashBoard({ setProgress }) {
           <div className="flex space-x-4">
             <button
               className={`py-2 px-4 ${
-                activeTab === "My Investments"
+                activeTab === "My Donations"
                   ? "bg-[#00B29F] text-white rounded-[6px]"
                   : "bg-[#9c9c9c] text-white rounded-[6px]"
               }`}
-              onClick={() => handleTabClick("My Investments")}
+              onClick={() => handleTabClick("My Donations")}
             >
-              My Investments
+              My Donations
             </button>
             <button
               className={`py-2 px-4 ${
@@ -93,8 +93,8 @@ function DashBoard({ setProgress }) {
               My Transactions
             </button>
           </div>
-          <div className="mt-4">
-            {activeTab === "My Investments" && (
+          <div className="mt-4 mb-4">
+            {activeTab === "My Donations" && (
               <div className="flex flex-col gap-2">
                 {user.my_donations.map((donations, index) => (
                   <Link to={`/details/${donations.listing._id}`} key={index}>

@@ -5,7 +5,7 @@ function Listings({ src, funds , amount , total_amount}) {
   const displayValue = Math.min(percentageLeft, 100); 
   console.log(percentageLeft)
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center md:items-start bg-white p-6 rounded-lg shadow-md">
+    <div className="flex flex-col md:flex-row justify-between items-center md:items-start bg-slate-800 text-white p-6 rounded-lg shadow-md">
       <div className="w-full md:w-1/4 mb-4 md:mb-0 h-48 md:h-48 flex-shrink-0">
         <div className="w-full h-full overflow-hidden rounded-lg">
           <img
@@ -18,11 +18,11 @@ function Listings({ src, funds , amount , total_amount}) {
 
       <div className="w-full md:w-1/3 mb-4 md:mb-0 text-center md:text-left md:flex md:flex-col justify-evenly md:h-48">
         <h2 className="text-3xl font-semibold mb-2">{funds}</h2>
-        <h3 className="text-gray-600 text-2xl  font-semibold">$ {total_amount}</h3>
+        <h3 className="text-white text-2xl  font-semibold">Total Fund asked : $ {total_amount}</h3>
       </div>
 
       <div className="w-full md:w-1/4 text-center md:text-right md:flex md:flex-col justify-center md:h-48 items-center">
-      <h3 className="text-gray-600 text-2xl mb-6 font-semibold">$ {amount}</h3>
+      <h3 className="text-[#00B29F] text-2xl mb-6 font-semibold">$ {amount}</h3>
 
         <div
           className="radial-progress text-[#43d854] w-[100px] h-[100px] font-bold"
