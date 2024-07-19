@@ -1,6 +1,5 @@
-import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import './index.css';
 import Home from './pages/Home';
 import Details from './pages/Details';
@@ -9,8 +8,11 @@ import ListFund from './pages/Form';
 import { Toaster } from 'react-hot-toast';
 import Signup from './pages/Signup';
 import LoadingBar from 'react-top-loading-bar';
+import LoadingBar from 'react-top-loading-bar';
+import DashBoard from './pages/Dashboard';
+
 function App() {
-	const [progress, setProgress] = React.useState(0);
+	const [progress, setProgress] = useState(0);
 	return (
 		<div>
 			<BrowserRouter>
@@ -36,6 +38,10 @@ function App() {
 					<Route
 						path='/list-fund'
 						element={<ListFund setProgress={setProgress} />}
+					/>
+					<Route
+						path='/dashboard'
+						element={<DashBoard setProgress={setProgress} />}
 					/>
 				</Routes>
 			</BrowserRouter>

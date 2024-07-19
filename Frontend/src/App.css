@@ -3,6 +3,13 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*{
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .logo {
