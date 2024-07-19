@@ -22,7 +22,7 @@ connectDB();
 // This middleware helps parse that JSON data and make it available in the req.body object of your route handlers.
 app.use(express.json());
 
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Server is Up ✅' });
 });
 

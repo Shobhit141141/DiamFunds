@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [fundraiser, setFundaraiser] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,17 +14,12 @@ function Home() {
         setFundaraiser(response.data.result);
         console.log(fundraiser);
       } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        console.error(err);
       }
     };
 
     fetchData();
   }, []);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="text-white bg-base-100 h-screen">

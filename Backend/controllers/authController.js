@@ -3,8 +3,6 @@ const User = require('../models/userModel');
 const {
   Keypair,
 } = require('diamante-base');
-const { Horizon } = require('diamante-sdk-js');
-const { default: axios } = require('axios');
 
 const handleUserSignUp = async (req, res) => {
   try {
@@ -21,12 +19,6 @@ const handleUserSignUp = async (req, res) => {
     const publicKey = keypair.publicKey();
     const secret_key = keypair.secret();
     const public_address = publicKey;
-    console.log(keypair.publicKey)
-
-    // Check for valid username
-    if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
-      return res.status(400).json({ error: 'Invalid username' });
-    }
 
     // Create a new user
     const newUser = new User({
@@ -40,15 +32,8 @@ const handleUserSignUp = async (req, res) => {
     const token = jwt.sign(
       { userId: newUser._id, username: newUser.username, public_address },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: '1w', issuer: 'DiamEstate' }
+      { expiresIn: '1w', issuer: 'DiamFunds' }
     );
-
-    // Seeting userId on diamante chain for associating web2 credential with web3
-    // const setDataResp = await axios.post('/api/user/set-data', {
-    //   name: 'userId',
-    //   value: newUser._id
-    // });
-    // console.log(setDataResp.data);
 
     res.status(201).json({
       result: newUser,
@@ -84,7 +69,7 @@ const handleUserLogin = async (req, res) => {
         public_address: user.public_address
       },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: '1w', issuer: 'DiamEstate' }
+      { expiresIn: '1w', issuer: 'DiamFunds' }
     );
 
     res

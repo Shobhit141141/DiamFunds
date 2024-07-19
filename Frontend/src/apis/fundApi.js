@@ -5,7 +5,7 @@ export const getAllFundraisers = async () => {
   const response = await axios.get(`${server_url}/funds/get-all`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
     },
   });
   return response;
@@ -15,7 +15,7 @@ export const getSingleFund = async (id) => {
   const response = await axios.get(`${server_url}/funds/get/${id}`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
     },
   });
   return response;
