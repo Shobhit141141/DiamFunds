@@ -3,7 +3,6 @@ import React from "react";
 function Listings({ src, funds , amount , total_amount}) {
   const percentageLeft = amount / total_amount * 100;
   const displayValue = Math.min(percentageLeft, 100); 
-  console.log(percentageLeft)
   return (
     <div className="flex flex-col md:flex-row justify-between items-center md:items-start bg-slate-800 text-white p-6 rounded-lg shadow-md">
       <div className="w-full md:w-1/4 mb-4 md:mb-0 h-48 md:h-48 flex-shrink-0">

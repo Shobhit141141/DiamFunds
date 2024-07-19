@@ -33,7 +33,6 @@ const Signup = ({ setProgress }) => {
 			});
 			setProgress(60);
 			toast.success('User registered successfully 🎉');
-			console.log(resp.data);
 		} catch (error) {
 			console.log(error);
 			toast.error(error.response.data.error);

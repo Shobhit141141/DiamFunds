@@ -42,8 +42,9 @@ export const getUserDetails = async () => {
 export const getDiamAccountTransactions = async () => {
 	try {
 		const resp = await axios.get(
-			`https://diamtestnet.diamcircle.io/accounts/${public_address}/transactions`
+			`https://diamtestnet.diamcircle.io/accounts/${localStorage.getItem("public_address")}/transactions`
 		);
+ 
 		return resp.data;
 	} catch (error) {
 		console.log('Error fetching transactions: ', error);

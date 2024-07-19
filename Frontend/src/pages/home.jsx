@@ -18,7 +18,6 @@ function Home({setProgress}) {
       try {
         const response = await getAllFundraisers();
         setFundaraiser(response.data.result);
-        console.log(fundraiser);
       } catch (err) {
         console.error(err);
       } finally {

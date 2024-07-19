@@ -19,7 +19,6 @@ function Details({ setProgress }) {
 			setProgress(30);
 			const response = await getSingleFund(id);
 			setFund(response.data.result);
-			console.log(response.data.result);
 			setProgress(100);
 		} catch (error) {
 			console.error('Error fetching fund:', error);
@@ -50,7 +49,6 @@ function Details({ setProgress }) {
 					},
 				}
 			);
-			console.log(resp.data);
 			setProgress(100);
 			toast.success('Payment Successful');
 		} catch (error) {

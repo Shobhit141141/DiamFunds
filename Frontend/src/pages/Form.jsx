@@ -64,7 +64,7 @@ const ListFund = ({ setProgress }) => {
     <>
       <Navbar />
       <div className="w-full min-h-screen bg-[#1D232A] flex justify-center overflow-hidden py-4">
-        <div className="mx-auto p-4 rounded-xl bg-gray-900 text-white w-[80%] md:w-[50%]">
+        <div className="mx-auto p-4 rounded-xl bg-gray-900 text-white w-[80%] md:w-[50%] h-fit">
           <h1 className="text-2xl font-bold mb-4">
             List a Fund Raiser 💰 for your NGO!
           </h1>
