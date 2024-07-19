@@ -1,8 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+const links = [
+  { label: "Homepage", to: "/" },
+  { label: "Dashboard", to: "/dashboard" },
+  { label: "Book", to: "/list-fund" },
+];
 
 const Navbar = () => {
   return (
-    <div className="navbar h-[60px] bg-base-200">
+    <div className="navbar h-[60px] bg-base-200 text-white">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -23,17 +30,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-50"
           >
-            <li>
-              <a>Homepage</a>
-            </li>
-            <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
-              <a>About</a>
-            </li>
+            {links.map((link, index) => (
+              <li key={index}>
+                <Link to={link.to}>{link.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

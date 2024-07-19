@@ -3,7 +3,7 @@ import { listFund } from "../apis/userApi";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const ListFund = () => {
+const ListFund = ({setProgress}) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -48,10 +48,12 @@ const ListFund = () => {
     e.preventDefault();
 
     try {
+      setProgress(50);
       const response = await listFund(formData);
       toast.success(response.data.message);
       navigate("/");
     } catch (error) {
+      setProgress(100);
       toast.error(error.response ? error.response.data.error : error.message);
     }
   };
