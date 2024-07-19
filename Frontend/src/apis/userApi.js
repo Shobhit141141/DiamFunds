@@ -28,3 +28,25 @@ export const donateToFund = async (fundId, amount) => {
   );
   return response;
 };
+
+export const getUserDetails = async () => {
+	const response = await axios.get(`${server_url}/user/details`, {
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${localStorage.getItem('token')}`,
+		},
+	});
+	return response;
+};
+
+export const getDiamAccountTransactions = async () => {
+	try {
+		const resp = await axios.get(
+			`https://diamtestnet.diamcircle.io/accounts/${public_address}/transactions`
+		);
+		return resp.data;
+	} catch (error) {
+		console.log('Error fetching transactions: ', error);
+		toast.error('Error fetching transactions');
+	}
+};
