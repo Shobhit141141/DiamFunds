@@ -26,7 +26,7 @@ function Listings({ src, funds , amount , total_amount}) {
         <div
           className="radial-progress text-[#43d854] w-[100px] h-[100px] font-bold"
           style={{
-            "--value": `${Math.floor(80)}`,
+            "--value": `${Math.floor(displayValue)}`,
             "--size": "12rem",
             "--thickness": "6px",
           }}

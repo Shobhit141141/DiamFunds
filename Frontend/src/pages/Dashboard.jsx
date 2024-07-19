@@ -132,7 +132,7 @@ function DashBoard({ setProgress }) {
                 </p>
                 <table className="min-w-full rounded-xl text-black border-2 border-black">
                   <thead>
-                    <tr className="border-b-2 border-black">
+                    <tr className="border-b-2 border-black text-white">
                       <th className="border-b-2 border-black p-2 text-left">
                         Date
                       </th>
