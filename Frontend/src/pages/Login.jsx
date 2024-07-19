@@ -38,9 +38,9 @@ const Login = ({ setProgress }) => {
 		>
 			<div className='hero bg-black bg-opacity-70 min-h-screen'>
 				<div className='hero-content  flex-col lg:flex-row-reverse'>
-					<div className='text-center lg:text-left'>
-						<h1 className='text-5xl text-white font-bold'>
-							Login to DiamFunds✅!
+					<div className='text-center lg:text-left mx-20'>
+						<h1 className='text-5xl flex items-center text-white font-bold'>
+							Login to <img src="/logo.png" width={80} alt="logo" /> DiamFunds!
 						</h1>
 						<p className='py-6 text-white text-2xl'>
 							"Empowering Change Together: Fund the Future with Your Support"

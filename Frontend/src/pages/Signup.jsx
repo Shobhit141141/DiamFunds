@@ -23,10 +23,14 @@ const Signup = ({ setProgress }) => {
 			const resp = await axios.post(`${server_url}/auth/register`, {
 				username,
 			});
+			setProgress(47);
 			setSecretKey(resp.data.result.secret_key);
 			setPublicAddress(resp.data.result.public_address);
 			localStorage.setItem('access_token', resp.data.access_token);
 			localStorage.setItem('public_address', resp.data.result.public_address);
+			const fund = await axios.get(`${server_url}/user/fund-account`, {
+				headers: { Authorization: `Bearer ${resp.data.access_token}` },
+			});
 			setProgress(60);
 			toast.success('User registered successfully 🎉');
 			console.log(resp.data);
@@ -67,7 +71,8 @@ const Signup = ({ setProgress }) => {
 						>
 							Copy Secret Key{' '}
 						</p>
-						<h2 className='text-lg my-3 font-bold'>Your Public Address :</h2> <p>{publicAddress}</p>
+						<h2 className='text-lg my-3 font-bold'>Your Public Address :</h2>{' '}
+						<p>{publicAddress}</p>
 						<p
 							onClick={() => {
 								navigator.clipboard.writeText(publicAddress);
@@ -106,9 +111,10 @@ const Signup = ({ setProgress }) => {
 
 			<div className='hero bg-black bg-opacity-70 min-h-screen'>
 				<div className='hero-content  flex-col lg:flex-row-reverse'>
-					<div className='text-center lg:text-left'>
-						<h1 className='text-5xl text-white font-bold'>
-							Sign Up on DiamFunds!
+					<div className='text-center lg:text-left mx-20'>
+						<h1 className='text-5xl flex items-center text-white font-bold'>
+							Sign Up on <img src='/logo.png' width={80} alt='logo' />{' '}
+							DiamFunds!
 						</h1>
 						<p className='py-6 text-white text-2xl'>
 							"Empowering Change Together: Fund the Future with Your Support"

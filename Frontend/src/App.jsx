@@ -8,7 +8,6 @@ import ListFund from './pages/Form';
 import { Toaster } from 'react-hot-toast';
 import Signup from './pages/Signup';
 import LoadingBar from 'react-top-loading-bar';
-import LoadingBar from 'react-top-loading-bar';
 import DashBoard from './pages/Dashboard';
 
 function App() {
