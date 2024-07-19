@@ -15,7 +15,8 @@ const listFund = async (req, res) => {
       description,
       images,
       totalFundAsked,
-      fundraiserId
+      fundraiserId,
+      public_address: req.public_address
     });
 
     const savedFund = await fund.save();
@@ -40,7 +41,9 @@ const getUserDetails = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    return res.status(200).json({ result: user, message: 'User details fetched successfully' });
+    return res
+      .status(200)
+      .json({ result: user, message: 'User details fetched successfully' });
   } catch (error) {
     console.error('Error getting user details:', error);
     res.status(500).json({ error: error.message });
@@ -66,9 +69,9 @@ const donateToFund = async (req, res) => {
     fund.donators.push({
       donorId: req.userId,
       amount,
-      donated_at: new Date(),
+      donated_at: new Date()
     });
-    if(fund.totalFundGot >= fund.totalFundAsked){
+    if (fund.totalFundGot >= fund.totalFundAsked) {
       fund.done = true;
     }
     await fund.save();
@@ -89,7 +92,9 @@ const fundAccountWithTestDiam = async (req, res) => {
   try {
     const publicKey = req.public_address;
     console.log(`Received request to fund account ${publicKey}`);
-    const response = await axios.get(`${process.env.DIAM_FAUCET_URI}?addr=${publicKey}`);
+    const response = await axios.get(
+      `${process.env.DIAM_FAUCET_URI}?addr=${publicKey}`
+    );
     const result = response.data;
     console.log(`Account ${publicKey} activated`, result);
     res.json({ message: `Account ${publicKey} funded successfully` });
@@ -148,7 +153,9 @@ const createTokenAssetOnChain = async (req, res) => {
     user.distribution_address = distributorKeypair.publicKey();
     user.distribution_secret_key = distributorKeypair.secret();
     await user.save();
-    const receivingKeys = DiamSdk.Keypair.fromSecret(distributorKeypair.secret());
+    const receivingKeys = DiamSdk.Keypair.fromSecret(
+      distributorKeypair.secret()
+    );
     // Create an asset (token) on diamante chain
     const newAsset = new DiamSdk.Asset(token_name, issuingKeys.publicKey());
 

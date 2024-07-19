@@ -52,6 +52,10 @@ const FundModel = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  public_address: {
+    type: String,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model('Funds', FundModel);
